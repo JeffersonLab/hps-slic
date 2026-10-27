@@ -1,0 +1,16 @@
+# Smoke test for the ForcedPairConversion plugin using real WAB stdhep
+# input (already rotated into beam coordinates), on the real v10-dev
+# detector geometry.
+
+/lcdd/url /sdf/group/hps/users/mgraham/MCProduction/2021/hps-java-v5.3.1-lowp-bugfix/detector-data/detectors/HPS_Run2021Pass1_v10-dev_14272/HPS_Run2021Pass1_v10-dev_14272.lcdd
+
+/run/initialize
+
+/generator/filename /sdf/data/hps/physics2021/mc/gen/wab/pass5_v9/HPS_Run2021Pass1_v10-dev_14272/stdhep/5/wab_3pt74_mom_rot_8110.stdhep
+
+/slic/plugins/load ForcedPairConversion
+
+/lcio/filename forced_pair_conversion_wab_test.slcio
+/lcio/fileExists delete
+
+/run/beamOn 2000
