@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['theabsorptionprocess_0',['theAbsorptionProcess',['../classLCOpticalPhysics.html#a1226e4d3248e62ced93853bf22a5cc35',1,'LCOpticalPhysics']]],
-  ['theboundaryprocess_1',['theBoundaryProcess',['../classLCOpticalPhysics.html#a51b2f0c15129e43ca2f99a923c988bd1',1,'LCOpticalPhysics']]],
-  ['thecerenkovprocess_2',['theCerenkovProcess',['../classLCOpticalPhysics.html#ad626b1b23198fc442e8e959bb30b3911',1,'LCOpticalPhysics']]],
-  ['therayleighscatteringprocess_3',['theRayleighScatteringProcess',['../classLCOpticalPhysics.html#a17e4c6568f16d3749623ddcd1f1cb256',1,'LCOpticalPhysics']]],
-  ['thescintillationprocess_4',['theScintillationProcess',['../classLCOpticalPhysics.html#a9d4f46356cc20c1486030aa2ac1baa4a',1,'LCOpticalPhysics']]],
-  ['trackid_5f_5',['trackID_',['../classslic_1_1StepPrinter.html#a65bd4cdbaebdc79dd78bcb967350c7b5',1,'slic::StepPrinter']]],
-  ['tracksummaryallocator_6',['TrackSummaryAllocator',['../namespaceslic.html#a8b8622ec34509229a881f7ceca8a8d19',1,'slic']]]
+  ['scalup_5f_0',['scalup_',['../classslic_1_1LHEEvent.html#affaa73946f1b16c58ffb065ad191e826',1,'slic::LHEEvent']]],
+  ['singleton_3c_20t_20_3e_3a_3am_5fsingleton_1',['m_singleton',['../Singleton_8hh.html#ac1c5c527ce37fe8217624341d04f6a13',1,'Singleton.hh']]],
+  ['spinup_5f_2',['spinup_',['../classslic_1_1LHEParticle.html#ab37cca106b6279b9dfff8b3c0beae7e6',1,'slic::LHEParticle']]],
+  ['stdhep_3',['STDHEP',['../classslic_1_1EventSourceManager.html#a2baba6be1abd35ea8801504380b44fc1',1,'slic::EventSourceManager']]]
 ];
