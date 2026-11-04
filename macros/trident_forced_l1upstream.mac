@@ -1,0 +1,105 @@
+# GPS beam-electron gun for the ForcedTridentL1Upstream plugin.
+#
+# Monoenergetic 3.74 GeV e-, fired from a realistic transverse beam spot
+# (sigma_x/sigma_y below are the production bsfix stdhep_beam_coords
+# values), isotropic in azimuth. Polar angle (measured from the beamline,
+# +z tilted ~30.5 mrad per this detector's module_L1 rotation /
+# beam_coords.cc's default theta_y) is restricted to 13-100 mrad so
+# generated electrons have a reasonable chance of landing in the L1
+# sensor's acceptance.
+#
+# At these polar angles the real post-target electron angular spectrum is
+# dominated by single Rutherford scattering off the target, not multiple
+# scattering, so the angular PDF is taken to be dsigma/dOmega ~ 1/theta^4
+# rather than an artificial flat/isotropic-in-cos(theta) cone. GPS's
+# "user"+"hist/type theta" histogram mode (G4SPSAngDistribution::
+# GenerateUserDefTheta) does NOT treat the supplied points as density
+# samples of a continuous PDF -- it builds the CDF as a running sum of the
+# RAW weight values themselves (vals[ii] = vals[ii-1] + weight[ii]), so
+# each weight is really the probability MASS assigned to the gap ending at
+# that point, not a point density. With points log-spaced in theta, the
+# gaps shrink multiplicatively, so feeding bare dsigma/dOmega samples (or
+# even sin(theta)/theta^4 dN/dtheta samples) as the weights systematically
+# oversamples small theta, since equal weights there get crammed into much
+# narrower bins. The weight for point i must therefore be the PDF density
+# at that point times the LOCAL bin width to that point:
+#   weight_i = [sin(theta_i)/theta_i^4] * (theta_i - theta_{i-1})
+# Point 0 (theta=13mrad, the hard mintheta cut) has no preceding gap and is
+# instead given a numerically-negligible weight (1e-6x what the forward-gap
+# recipe would give): G4PhysicsOrderedFreeVector::GetEnergy() maps any CDF
+# draw <= the first entry's cumulative value exactly to theta_0, so giving
+# it a normal-sized weight creates an artificial delta-function pileup
+# exactly at the mintheta edge (confirmed: inflated the first decade's bin
+# count by 22% in a 4000-event validation run before this fix). Verified
+# numerically and via a 4000-event SLIC run (binned log-spaced theta
+# histogram of actual generated primaries): this recipe reproduces the
+# target sin(theta)/theta^4 shape in every bin from 13-100mrad to within
+# Poisson statistics, whereas naive bare-density weights (no bin-width
+# factor) undersample the 100mrad tail by ~7x. Points are log-spaced over
+# [13,100] mrad (24 points gives <1% piecewise-linear integration error
+# against the analytic 1/theta^4 shape, checked numerically).
+#
+# rot1/rot2 orient GPS's polar axis (theta=0) along global +z with full-phi
+# azimuthal symmetry about it -- verified against
+# G4SPSAngDistribution::GenerateIsotropicFlux/DefineAngRefAxes. This is the
+# same convention used by this detector's other forward-cone GPS examples
+# (not the rot1/rot2 pair used by gps.mac's rectangular-box example). The
+# min/max theta cut still applies (via rejection sampling) in "user" mode.
+#
+# /gps/ang/surfnorm false is required: G4SPSAngDistribution's UserWRTSurface
+# member defaults to true in the class's own constructor (contradicting the
+# UI command's advertised default of false), so "user" mode silently
+# generates momenta relative to the position distribution's surface normal
+# instead of the rot1/rot2 axes unless this is set explicitly -- without it,
+# primaries fire in -z instead of +z (confirmed by direct test).
+#
+# Per hps-mc's SLIC component convention: no /lcdd/url, /run/initialize, or
+# /run/beamOn here -- hps-mc's SLIC wrapper handles geometry/run setup
+# itself when driven through a job script.
+
+/generator/select gps
+
+/gps/particle e-
+/gps/energy 3.74 GeV
+
+/gps/pos/type Beam
+/gps/pos/sigma_x 0.055 mm
+/gps/pos/sigma_y 0.045 mm
+/gps/pos/centre 0 0 0 mm
+
+/gps/ang/type user
+/gps/ang/surfnorm false
+/gps/ang/rot1 1 0 0
+/gps/ang/rot2 0 -1 0
+/gps/ang/mintheta 13 mrad
+/gps/ang/maxtheta 100 mrad
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/gps/hist/type theta
+/gps/hist/point 0.013000 5.488515e-04 0
+/gps/hist/point 0.014206 4.206465e+02 0
+/gps/hist/point 0.015524 3.522793e+02 0
+/gps/hist/point 0.016964 2.949558e+02 0
+/gps/hist/point 0.018537 2.469366e+02 0
+/gps/hist/point 0.020256 2.068165e+02 0
+/gps/hist/point 0.022135 1.732418e+02 0
+/gps/hist/point 0.024189 1.451123e+02 0
+/gps/hist/point 0.026432 1.214475e+02 0
+/gps/hist/point 0.028884 1.017391e+02 0
+/gps/hist/point 0.031564 8.520922e+01 0
+/gps/hist/point 0.034491 7.132130e+01 0
+/gps/hist/point 0.037691 5.974948e+01 0
+/gps/hist/point 0.041187 5.002282e+01 0
+/gps/hist/point 0.045007 4.188674e+01 0
+/gps/hist/point 0.049182 3.508026e+01 0
+/gps/hist/point 0.053744 2.937354e+01 0
+/gps/hist/point 0.058729 2.459561e+01 0
+/gps/hist/point 0.064177 2.059685e+01 0
+/gps/hist/point 0.070130 1.724520e+01 0
+/gps/hist/point 0.076635 1.443912e+01 0
+/gps/hist/point 0.083744 1.209037e+01 0
+/gps/hist/point 0.091512 1.012206e+01 0
+/gps/hist/point 0.100000 8.473860e+00 0
+
+/slic/plugins/load ForcedTridentL1Upstream

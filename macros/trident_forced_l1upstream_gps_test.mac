@@ -1,0 +1,61 @@
+# Standalone smoke test for the ForcedTridentL1Upstream plugin: fires beam
+# electrons directly via SLIC (bypassing hps-mc) to verify the plugin loads,
+# registers G4ePairProduction on G4Electron::Electron() once at beginRun(),
+# finds module_L1 in the real v10-dev detector geometry, and forces a
+# trident interaction with a sensible weight and three secondary tracks.
+
+/lcdd/url /sdf/group/hps/users/mgraham/MCProduction/2021/hps-java-v5.3.1-lowp-bugfix/detector-data/detectors/HPS_Run2021Pass1_v10-dev_14272/HPS_Run2021Pass1_v10-dev_14272.lcdd
+
+/run/initialize
+
+/generator/select gps
+
+/gps/particle e-
+/gps/energy 3.74 GeV
+
+/gps/pos/type Beam
+/gps/pos/sigma_x 0.055 mm
+/gps/pos/sigma_y 0.045 mm
+/gps/pos/centre 0 0 0 mm
+
+/gps/ang/type user
+/gps/ang/surfnorm false
+/gps/ang/rot1 1 0 0
+/gps/ang/rot2 0 -1 0
+/gps/ang/mintheta 13 mrad
+/gps/ang/maxtheta 100 mrad
+/gps/ang/minphi 0 deg
+/gps/ang/maxphi 360 deg
+
+/gps/hist/type theta
+/gps/hist/point 0.013000 5.488515e-04 0
+/gps/hist/point 0.014206 4.206465e+02 0
+/gps/hist/point 0.015524 3.522793e+02 0
+/gps/hist/point 0.016964 2.949558e+02 0
+/gps/hist/point 0.018537 2.469366e+02 0
+/gps/hist/point 0.020256 2.068165e+02 0
+/gps/hist/point 0.022135 1.732418e+02 0
+/gps/hist/point 0.024189 1.451123e+02 0
+/gps/hist/point 0.026432 1.214475e+02 0
+/gps/hist/point 0.028884 1.017391e+02 0
+/gps/hist/point 0.031564 8.520922e+01 0
+/gps/hist/point 0.034491 7.132130e+01 0
+/gps/hist/point 0.037691 5.974948e+01 0
+/gps/hist/point 0.041187 5.002282e+01 0
+/gps/hist/point 0.045007 4.188674e+01 0
+/gps/hist/point 0.049182 3.508026e+01 0
+/gps/hist/point 0.053744 2.937354e+01 0
+/gps/hist/point 0.058729 2.459561e+01 0
+/gps/hist/point 0.064177 2.059685e+01 0
+/gps/hist/point 0.070130 1.724520e+01 0
+/gps/hist/point 0.076635 1.443912e+01 0
+/gps/hist/point 0.083744 1.209037e+01 0
+/gps/hist/point 0.091512 1.012206e+01 0
+/gps/hist/point 0.100000 8.473860e+00 0
+
+/slic/plugins/load ForcedTridentL1Upstream
+
+/lcio/filename trident_forced_l1upstream_gps_test.slcio
+/lcio/fileExists delete
+
+/run/beamOn 2000

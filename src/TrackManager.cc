@@ -1,6 +1,7 @@
 #include "TrackManager.hh"
 
 // SLIC
+#include "EventSourceManager.hh"
 #include "LcioManager.hh"
 #include "MCParticleManager.hh"
 #include "StdHepGenerator.hh"
@@ -22,12 +23,23 @@ namespace slic {
 
 void TrackManager::saveTrackSummaries(const G4Event* anEvent, LCEvent* lcEvent) {
 
+    /*
+     * Geant4-internal generators (GPS, particle gun) never populate the
+     * MCParticle collection themselves -- all of their output particles are
+     * flagged as sim particles below and need geant4Generator=true to be
+     * added to the output collection. Determined from the source type
+     * directly (not from whether the collection already exists) so that a
+     * plugin reading/writing the collection earlier in the event (e.g. to
+     * stash an event weight before createLCEvent() reads it) can't
+     * accidentally flip this flag by having already created the collection.
+     */
+    EventSourceManager::ESourceType sourceType = EventSourceManager::instance()->getCurrentSourceType();
+    G4bool geant4Generator = (sourceType == EventSourceManager::eGPS || sourceType == EventSourceManager::eParticleGun);
+
     /* If Geant4 event generation was used, then an empty MCParticle collection needs to be created. */
-    G4bool geant4Generator = false;
     if (MCParticleManager::instance()->getMCParticleCollection() == NULL) {
         //std::cout << "creating empty MCParticle collection" << std::endl;
         MCParticleManager::instance()->createMCParticleCollection();
-        geant4Generator = true;
     }
 
     /* Copy MCParticle pointers into the corresponding TrackSummary objects for primary particles. */
