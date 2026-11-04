@@ -4,5 +4,6 @@ var searchData=
   ['idprup_5f_1',['idprup_',['../classslic_1_1LHEEvent.html#ad1cab166e704fc1445a2cf165bc15a83',1,'slic::LHEEvent']]],
   ['idup_5f_2',['idup_',['../classslic_1_1LHEParticle.html#af9b8071b4c5a58c7d2640a417213efea',1,'slic::LHEParticle']]],
   ['ifs_5f_3',['ifs_',['../classslic_1_1LHEReader.html#a32f22b905d785d48758b9ca5490ee495',1,'slic::LHEReader']]],
-  ['istup_5f_4',['istup_',['../classslic_1_1LHEParticle.html#acc6b1cc084cd0a1f10221697c50ea143',1,'slic::LHEParticle']]]
+  ['initialized_5f_4',['initialized_',['../classslic_1_1ForcedTridentL1Upstream.html#aef7436a220692b5b863db4e9d8b870a3',1,'slic::ForcedTridentL1Upstream']]],
+  ['istup_5f_5',['istup_',['../classslic_1_1LHEParticle.html#acc6b1cc084cd0a1f10221697c50ea143',1,'slic::LHEParticle']]]
 ];

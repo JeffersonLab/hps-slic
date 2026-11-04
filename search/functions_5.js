@@ -20,5 +20,6 @@ var searchData=
   ['forcedpairconversion_17',['ForcedPairConversion',['../classslic_1_1ForcedPairConversion.html#a529dfc4629a74c574b4d591f79cf492a',1,'slic::ForcedPairConversion']]],
   ['forcedpairconversionl1downstream_18',['ForcedPairConversionL1Downstream',['../classslic_1_1ForcedPairConversionL1Downstream.html#a8200bb5c5402a8c8e6c0825d4eac8498',1,'slic::ForcedPairConversionL1Downstream']]],
   ['forcedpairconversionl2downstream_19',['ForcedPairConversionL2Downstream',['../classslic_1_1ForcedPairConversionL2Downstream.html#a2c061a084c66e6155198094641726d43',1,'slic::ForcedPairConversionL2Downstream']]],
-  ['forcedpairconversionl2upstream_20',['ForcedPairConversionL2Upstream',['../classslic_1_1ForcedPairConversionL2Upstream.html#a37b6adab4cbccff29814144900c7e92e',1,'slic::ForcedPairConversionL2Upstream']]]
+  ['forcedpairconversionl2upstream_20',['ForcedPairConversionL2Upstream',['../classslic_1_1ForcedPairConversionL2Upstream.html#a37b6adab4cbccff29814144900c7e92e',1,'slic::ForcedPairConversionL2Upstream']]],
+  ['forcedtridentl1upstream_21',['ForcedTridentL1Upstream',['../classslic_1_1ForcedTridentL1Upstream.html#a50d5145554f574d875fd087e7e909e2d',1,'slic::ForcedTridentL1Upstream']]]
 ];

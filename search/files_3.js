@@ -13,5 +13,7 @@ var searchData=
   ['forcedpairconversionl2downstream_2ecc_10',['ForcedPairConversionL2Downstream.cc',['../ForcedPairConversionL2Downstream_8cc.html',1,'']]],
   ['forcedpairconversionl2downstream_2ehh_11',['ForcedPairConversionL2Downstream.hh',['../ForcedPairConversionL2Downstream_8hh.html',1,'']]],
   ['forcedpairconversionl2upstream_2ecc_12',['ForcedPairConversionL2Upstream.cc',['../ForcedPairConversionL2Upstream_8cc.html',1,'']]],
-  ['forcedpairconversionl2upstream_2ehh_13',['ForcedPairConversionL2Upstream.hh',['../ForcedPairConversionL2Upstream_8hh.html',1,'']]]
+  ['forcedpairconversionl2upstream_2ehh_13',['ForcedPairConversionL2Upstream.hh',['../ForcedPairConversionL2Upstream_8hh.html',1,'']]],
+  ['forcedtridentl1upstream_2ecc_14',['ForcedTridentL1Upstream.cc',['../ForcedTridentL1Upstream_8cc.html',1,'']]],
+  ['forcedtridentl1upstream_2ehh_15',['ForcedTridentL1Upstream.hh',['../ForcedTridentL1Upstream_8hh.html',1,'']]]
 ];

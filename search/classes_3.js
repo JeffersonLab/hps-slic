@@ -7,5 +7,6 @@ var searchData=
   ['forcedpairconversion_4',['ForcedPairConversion',['../classslic_1_1ForcedPairConversion.html',1,'slic']]],
   ['forcedpairconversionl1downstream_5',['ForcedPairConversionL1Downstream',['../classslic_1_1ForcedPairConversionL1Downstream.html',1,'slic']]],
   ['forcedpairconversionl2downstream_6',['ForcedPairConversionL2Downstream',['../classslic_1_1ForcedPairConversionL2Downstream.html',1,'slic']]],
-  ['forcedpairconversionl2upstream_7',['ForcedPairConversionL2Upstream',['../classslic_1_1ForcedPairConversionL2Upstream.html',1,'slic']]]
+  ['forcedpairconversionl2upstream_7',['ForcedPairConversionL2Upstream',['../classslic_1_1ForcedPairConversionL2Upstream.html',1,'slic']]],
+  ['forcedtridentl1upstream_8',['ForcedTridentL1Upstream',['../classslic_1_1ForcedTridentL1Upstream.html',1,'slic']]]
 ];
